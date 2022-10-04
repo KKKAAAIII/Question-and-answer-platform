@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Post a question{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="row mt-3">
+        <div class="col"></div>
+        <div class="col-6">
+            <form action="{{ url_for('qa.post_question') }}" method="POST">
+                <div class="mb-3 text-center fs-3">
+                    Post a question
+                </div>
+                <div class="mb-3">
+                    <input type="text" aria-label="Question" class="form-control" name='title'
+                           placeholder="Type your question here">
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" name="content" rows="5" aria-label="Description"
+                              placeholder="Type your description here"></textarea>
+                </div>
+
+                {% for message in get_flashed_messages() %}
+                    <div class="mb-3">
+                        <div class="text-danger">{{ message }}</div>
+                    </div>
+                {% endfor %}
+
+                <div class="d-md-flex justify-content-md-end">
+                    <button class="btn btn-primary btn-sm" type="submit">Post</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

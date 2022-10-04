@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail of {{ question.title }}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="row mt-4">
+        <div class="col"></div>
+        <div class="col-8" style="background-color: #fff">
+            <h3 class="page-title p-4">{{ question.title }}</h3>
+            <p class="question-info">
+                <span>Author: {{ question.author.username }} </span>
+                <span>{{ question.create_time }}</span>
+            </p>
+            <hr>
+            <p class="question-content">{{ question.content }}</p>
+            <hr>
+
+            <form action="{{ url_for('qa.answer', question_id=question.id) }}" method="POST">
+                <div>
+                    <input type="text" placeholder="Enter you comment here" name="content" class="form-control" aria-label="comment">
+                </div>
+                {% for message in get_flashed_messages() %}
+                    <div class="mb-3">
+                        <div class="text-danger">{{ message }}</div>
+                    </div>
+                {% endfor %}
+                <div style="text-align: right">
+                    <button class="btn btn-primary" type="submit" style="margin: 20px;">send comment</button>
+                </div>
+            </form>
+
+            <h5 class="comment-group-title">Comment ({{ question.answers|length }}):</h5>
+
+            <ul class="comment-group">
+                {% for answer in question.answers %}
+                <li>
+                    <div class="user-info">
+                        <img class="avatar" src="{{ url_for('static', filename='images/avatar1.jpg') }}" alt="">
+                        <span class="username">{{ answer.author.username }}</span>
+                        <span class="create-time">{{ answer.create_time }}</span>
+                    </div>
+                    <p class="comment-content">{{ answer.content }}</p>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+        <div class="col"></div>
+    </div>
+{% endblock %}

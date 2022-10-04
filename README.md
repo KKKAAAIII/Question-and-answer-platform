@@ -15,6 +15,10 @@ You can run it through pycharm or just by execute app.py in console.
 
 
 
+
+
+
+
 Preview of the app.
 
 Home page
@@ -26,3 +30,9 @@ Register
 
 Login
 ![login](readme_images/login.jpg)
+
+Post a question
+![post question](readme_images/post_question.jpg)
+
+Answer a question
+![answer question](readme_images/answer_question.jpg)

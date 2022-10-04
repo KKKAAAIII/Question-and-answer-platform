@@ -13,4 +13,4 @@ Set your own mail service, you will need a email address help you to send email 
 
 You can run it through pycharm or just by execute app.py in console.
 
-![My Image](images/homepage.jpg)
+![My Image](readme_images/homepage.jpg)
